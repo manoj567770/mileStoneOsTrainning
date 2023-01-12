@@ -1,0 +1,19 @@
+header{
+	background-color:blueviolet;
+
+}
+header h1{
+	margin-left: 450px;
+	padding: 50px;
+}
+aside{
+margin-left: 1100px;
+
+}
+section{
+	width: 60%;
+}
+footer{
+	background-color: blueviolet;
+	padding: 40px;
+}

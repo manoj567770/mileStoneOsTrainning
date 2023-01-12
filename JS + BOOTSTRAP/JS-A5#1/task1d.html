@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<link href="style.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://m.w3newbie.com/you-tube.css">
+	<style>
+		b {
+			color: red;
+		}
+		h4{
+			text-align: center;
+		}
+		h3{
+			text-align: center;
+		}
+		.col-sm-4{
+			border: 1px groove black;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div id="show"></div>
+	</div>
+
+
+	<script>
+		const products = [{product:'Pepsi',price:25},
+					 {product:'Dairy Milk',price:40},
+					 {product:'Colgate',price:80},
+					 {product:'Maggie',price:15},
+					 {product:'Snickers',price:50},
+					 {product:'Nescafe',price:10}];
+
+
+		show();
+		function show(active){
+			let str = makeNavbar(active);
+			active===1 ? str+= showProducts1() : str+= '';
+			active===2 ? str+= showForm() : str+= '';
+			active===3 ? str+= showProducts3() : str+= '';
+
+			document.getElementById('show').innerHTML = str;
+		}
+
+		function showProducts(){
+			show(1);
+		}
+		
+		function addProductForm(){
+			show(2);
+		}
+		function showProducts2(){
+			show(3);
+		}
+		function makeNavbar(active=0){
+			let str = '<nav class="navbar navbar-expand-lg navbar-light bg-light">';
+				str+= '<a class="navbar-brand" href="#">Store System</a>';
+				str+= '<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">';
+				str+= '<span class="navbar-toggler-icon"></span>';
+				str+= '</button>';
+				str+= '<div class="collapse navbar-collapse" id="navbarNavDropdown">';
+				str+= '<ul class="navbar-nav">';
+				let active1 = active===1 ? 'active' : '';
+				let active2 = active===2 ? 'active' : '';
+				let active3 = active===3 ? 'active' : '';
+				str+= '<li class="nav-item '+active1+'">'
+				str+= '<a class="nav-link" onclick="showProducts()">Show Products</a>';
+				str+= '</li>';
+				str+= '<li class="nav-item '+active2+'">';
+				str+= '<a class="nav-link" onclick="addProductForm()">Add a Product</a>';
+				str+= '</li>';
+				str+= '<li class="nav-item '+active3+'">';
+				str+= '<a class="nav-link" onclick="showProducts2()">show Products-2</a>';
+				str+= '</li>';
+				str+= '</ul>';
+				str+= '</div>';
+				str+= '</nav>';
+				return str;
+		}
+
+		function showProducts1(){
+						const arr = products.map(pr=>{
+							let {product,price} = pr;
+							let str = '<div class="row border">';
+							str+= '<div class="col-8">'+product+'</div>';
+							str+= '<div class="col-4">'+price+'</div>';
+							str+= '</div>';
+							return str;
+						});
+
+						let table = '<div class="row bg-dark text-white">';
+						 table+= '<div class="col-8">Product</div>';
+						 table+= '<div class="col-4">Price</div>';
+						 table+= '</div>';
+						 table+= arr.join('');
+							return table;
+					}
+
+			function showForm(){
+			let str = makeTextField('prodName','Product Name','Enter the Product name');
+				str+= makeTextField('price','Price','Enter the Price');
+				str+= '<button class="btn btn-primary" onclick="submitProduct()">Submit</button>';
+
+				return str;
+		}
+		function makeTextField(id,label,placeholder=''){
+					let str = '<div class="form-group">';
+					str+= '<label>'+label+'</label>';
+					str+= '<input type="text" class="form-control" id="'+id+'" placeholder="'+placeholder+'">';
+					str+= '</div>';
+					return str;
+		}
+
+		function submitProduct(){
+			let pname = document.getElementById('prodName').value;
+			let price = document.getElementById('price').value;
+			let json = {product:pname,price:price};
+			products.push(json);
+			show(1);
+		}
+
+		function showProducts3(){
+						const arr = products.map(pr=>{
+							let {product,price} = pr;
+							let str = '<div class="col-sm-4" style="background-color:lavender;">';
+    						str+= '<b>Product : </b>'+product+'<br/>';
+  							str+= '<b>Price : </b> '+price+'';
+   							str+= '</div>';
+   							return str;
+   						});
+
+							let table = '<h3>List of Product-2</h3>';
+   							table+= '<div class="row">';
+   							table+= arr.join('');
+							return table;
+					}
+	</script>
+</body>
+</html>

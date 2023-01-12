@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="css/task6.css" />
+</head>
+<body>
+	<h2>Welcome to the quiz test</h2>
+	<div id="showdata"></div>
+	<script>
+		
+		
+		let arr = [{name:'Einstein', score:0},
+		{name:'Newton', score:0},
+		{name:'Edison', score:0}];
+		let flag = false;
+``
+		function show(){
+			let s1 = showMarks();
+		let element = document.getElementById('showdata');
+		element.innerHTML = s1;
+	}
+
+		function showMarks(){
+		let rMap = arr.map(function(ele){
+		str = '<tr>';
+		str+='<td class=\''+getScore(ele.score)+'\'>'+ele.name+'</td>';
+		str+='<td class=\''+getScore(ele.score)+'\'>'+ele.score+'</td>';
+		str+= '<td><button class=\''+getScore(ele.score)+'\' onclick=\'addTwo(\"'+ele.name+'")\'>+2</button></td>';
+		str+= '<td><button class=\''+getScore(ele.score)+'\' onclick=\'minusOne(\"'+ele.name+'")\'>-1</button></td>';
+		str+='</tr>';
+		return str;
+	});
+		let html ='<table class="table1">'+rMap.join('')+'</table>';
+		return html;
+	}
+	show();
+	function addTwo(name){
+			let arr1 = arr.find(function(element){
+				if(element.name==name){
+					return element;
+				}
+			});
+			arr1.score = arr1.score + 2;
+			
+			flag = true;
+			show();
+		}
+		function minusOne(name){
+			let arr1 = arr.find(function(element){
+				if(element.name==name){
+					return element;
+				}
+			});
+			arr1.score = arr1.score - 1;
+			show();
+		}
+		function getScore(scores){
+			console.log(scores);
+			if(scores>0 && flag){
+			return 'th2';
+		}
+		else if(scores<0 && flag){
+			return 'th3'; 
+		}
+		else{
+			return 'th1';
+		}
+		}
+	</script>
+
+</body>
+</html>

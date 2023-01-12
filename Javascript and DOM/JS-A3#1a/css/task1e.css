@@ -1,0 +1,33 @@
+body {
+	margin-left: 10px;
+	padding: 0;
+
+}
+table,td,th{
+	border: 2px solid #000;
+	border-collapse: collapse;
+}
+table button{
+	background: red;
+}
+th{
+	background: black;
+	color: white;
+	border: 1px solid white;
+	border-collapse: collapse;
+}
+.my-list td{
+	background: greenyellow;
+}
+.my-list1 td{
+	background: blueviolet;
+}
+.my-list2 td{
+	background: greenyellow;
+}
+.my-list5 td{
+	background: blueviolet;
+}
+button{
+	margin: 2px;
+}

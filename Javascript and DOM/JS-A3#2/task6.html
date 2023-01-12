@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="css/task6.css"/>
+</head>
+<body>
+	<div id="array"></div>
+
+	<script>
+		let arr = [{"name":"Maggi","price":25, offers:["Citi Credit Cards","ICICI Card"]},
+		{"name":"Perk","price":10, offers:["Axis Credit Cards","PayTM"]},
+		{"name":"Gems","price":15, offers:["SBI Card","PhonePe","PayTM"]},
+		{"name":"Lindt","price":90, offers:[]},
+		{"name":"Nutties","price":12, offers:["Citi Credit Cards "]},
+		{"name":"Pepsi","price":15, offers:["PhonePe","PayTM"]},
+		{"name":"Coca Cola","price":15, offers:["SBI Card"]},
+		{"name":"Dairy Milk","price":10, offers:[]}];
+
+
+
+		show();
+		function show(){
+		let arr1 = arr.map(function(ele){
+			let str = '<tr>';
+				str+='<td class="table1">'+'Name :'+ele.name+' '+'Price :'+ele.price+'</br><button class=\'remBtn\' onclick=\'showOffers(\"'+ele.name+'")\'>Show Offer</button></td>'
+				str+='</tr>';
+				return str;
+		});
+		let html = '<table class=\'table1\'>'+arr1.join('')+'</table1>';
+			let element = document.getElementById('array');
+			element.innerHTML = html;
+	}
+
+		function showOffers(name){
+			let arr1 = arr.map(function(ele){
+				let len = ele.offers.length;
+				if(ele.name==name && ele.offers!=''){
+					let str = '<tr>';
+					str+='<td class="table2">'+'Name :'+ele.name+' '+'Price :'+ele.price+'</br>'+len+' '+'Offers From'+'</br>'+ele.offers+'</br><button class=\'\' onclick=\'hideOffers()\'>Hide Offer</button></td>'
+					str+='</tr>';
+					return str;
+				}
+				else if(ele.name==name && ele.offers==''){
+					let str = '<tr>';
+					str+='<td class="table2">'+'Name :'+ele.name+' '+'Price :'+ele.price+'</br>'+' No offers '+'</br>'+ele.offers+'</br><button class=\'\' onclick=\'hideOffers()\'>Hide Offer</button></td>'
+					str+='</tr>';
+					return str;
+
+				}
+				else{
+					let str = '<tr>';
+					str+='<td class="table1">'+'Name :'+ele.name+' '+'Price :'+ele.price+'</br><button class=\'\' onclick=\'showOffers(\"'+ele.name+'")\'>Show Offer</button></td>'
+					str+='</tr>';
+					return str;
+				}
+
+					
+			});
+			let html = '<table class=\'table2\'>'+arr1.join('')+'</table1>';
+			let element = document.getElementById('array');
+			element.innerHTML = html;
+
+			}
+			function hideOffers(){
+				show();
+			}
+			
+				
+
+	</script>
+
+</body>
+</html>

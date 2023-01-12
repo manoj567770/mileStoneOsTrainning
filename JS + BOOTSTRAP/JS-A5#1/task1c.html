@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<link href="style.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://m.w3newbie.com/you-tube.css">
+</head>
+<body>
+	<div class="container">
+		<div id="show"></div>
+	</div>
+
+
+	<script>
+		show();
+		function show(active){
+			let str = makeNavbar(active);
+			document.getElementById('show').innerHTML = str;
+		}
+
+		function showProducts(){
+			show(1);
+		}
+		
+		function addProductForm(){
+			show(2);
+		}
+		function makeNavbar(active=0){
+			let str = '<nav class="navbar navbar-expand-lg navbar-light bg-light">';
+				str+= '<a class="navbar-brand" href="#">Store System</a>';
+				str+= '<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">';
+				str+= '<span class="navbar-toggler-icon"></span>';
+				str+= '</button>';
+				str+= '<div class="collapse navbar-collapse" id="navbarNavDropdown">';
+				str+= '<ul class="navbar-nav">';
+				let active1 = active===1 ? 'active' : '';
+				let active2 = active===2 ? 'active' : '';
+				str+= '<li class="nav-item '+active1+'">'
+				str+= '<a class="nav-link" onclick="showProducts()">Show Products</a>';
+				str+= '</li>';
+				str+= '<li class="nav-item '+active2+'">';
+				str+= '<a class="nav-link" onclick="addProductForm()">Add a Product</a>';
+				str+= '</li>';
+				str+= '</ul>';
+				str+= '</div>';
+				str+= '</nav>';
+				return str;
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+body{
+	background-color: lightgreen;
+	
+}
+
+button {
+	background-color: lightblue;
+	color: white;
+}
+
+.main{
+	background-color: slategray;
+	margin-left: 300px;
+	margin-right: 300px;
+}
+label{
+	width: 300px;
+	display: block;
+	text-align: right;
+}
+
+input[type="text"]{
+	margin-left: 100px;
+}
+.hello2{
+	margin-left: 40px;
+	display: block;
+}
+.hello3{
+	margin-left: 40px;
+}
+.hello4{
+	margin-left: 40px;
+}
+button{
+	margin-left: 50px;
+}
+form{
+	text-align: center;
+}
+.hello4{
+	margin-left: 300px;
+}

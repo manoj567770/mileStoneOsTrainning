@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<link href="style.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://m.w3newbie.com/you-tube.css">
+
+	<style>
+		b {
+			color: red;
+		}
+		h4{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="show"></div>
+  <script>
+  	const products = [{product:'Pepsi',price:25},
+					 {product:'Dairy Milk',price:40},
+					 {product:'Colgate',price:80},
+					 {product:'Maggie',price:15},
+					 {product:'Snickers',price:50},
+					 {product:'Nescafe',price:10}];
+
+  		let html = showProducts1();
+  		document.getElementById('show').innerHTML = html;
+
+  					function showProducts1(){
+						const arr = products.map(pr=>{
+							let {product,price} = pr;
+							let str = '<div class="col-sm-4" style="background-color:lavender;">';
+    						str+= '<b>Product : </b>'+product+'<br/>';
+  							str+= '<b>Price : </b> '+price+'';
+   							str+= '</div>';
+   							return str;
+   						});
+
+   						let table = '<div class="row">';
+  
+   							table+= arr.join('');
+							return table;
+					}
+
+
+  </script>
+
+</body>
+</html>

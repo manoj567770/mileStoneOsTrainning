@@ -1,0 +1,16 @@
+table,tr,td{
+	border: 2px solid #000;
+	border-collapse: collapse;
+}
+.table12 button{
+	background: red;
+}
+.table11 button{
+	background: purple;
+}
+.my-table2 td{
+	background: blue;
+}
+.my-table1 td{
+	background: blue;
+}

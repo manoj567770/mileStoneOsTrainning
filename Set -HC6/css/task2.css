@@ -1,0 +1,83 @@
+header{
+	background-color: lightgray;
+	width: 100%;
+}
+
+header,.header1 {
+	float: left;
+	color: red;
+}
+nav ul{
+	list-style: none;
+}
+
+nav,ul,li{
+	display: inline-block;
+	margin-left: 70px;
+	padding-top: 0;
+}
+nav{
+	float: right;
+}
+main, .hello{
+	margin-left: 200px;
+}
+.material img{
+	float: left;
+	width: 30px;
+}
+.material p,h2{
+	margin-left: 200px;
+	text-align: initial;
+	line-height: 0;
+	padding-top: 10px;
+}
+.material1 img{
+	float: left;
+	width: 35px;
+}
+.material1 p,h2{
+	margin-left: 200px;
+	text-align: initial;
+	line-height: 0;
+	
+}
+.material2 img{
+	float: left;
+	width: 30px;
+}
+.material2 p,h2{
+	margin-left: 200px;
+	text-align: initial;
+	line-height: 0;
+
+}
+.video video{
+	width: 30%;
+	height: 40%;
+	margin-left: 400px;
+}
+.block{
+	float: left;
+	width: 30.3%;
+	border: 1px solid black;
+	background: gray;
+
+}
+.block h3,p{
+	text-align: center;
+}
+main,section .block{
+	background: gray;
+	height: 100%;
+}
+button{
+	background-color: pink;
+	color: black;
+}
+body{
+	background: gray;
+}
+.block h3{
+	background-color: lightgray;
+}

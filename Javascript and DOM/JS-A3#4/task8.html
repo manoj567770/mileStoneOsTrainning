@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	
+	
+	<div id="task6"></div>
+	
+	
+	<script>
+		
+		const arr = ["Cricket","Football", "Basketball", "Badminton", "Table Tennis"];
+		var arr1 = [];
+		show();
+
+
+	
+	function show(){
+			const arr2 = arr.map(function(ele){
+
+				let s1 = '<input type="radio" id="element" name="sport" value="'+ele+'">'+ele+'<br/>';
+				return s1;
+			});
+
+				const showArr = arr1.map(function(ele){
+				 	let str = '<label onclick=\'edit(\"'+ele.fieldName+'")\'>'+ele.fieldName+'&nbsp&nbsp'+'</label>';
+				 		str+= ele.sport+'<br/>';
+				 		return str;
+				 });
+				let input = '<input type="text" id="name" name=""></br>';
+				let btn = '<button onclick="add()">submit</button>';
+
+			let html = input + arr2.join('')+btn+'<br/>'+ showArr.join(''); 
+			let element = document.getElementById("task6");
+			element.innerHTML = html;
+		}
+
+
+		function add(){
+			let arr5 = [];
+			let s1 = document.getElementsByName('sport');
+			let s = document.getElementById('name');
+
+			for(let i=0;i<s1.length;i++)
+				if(s1[i].checked==true){
+					arr5.push(s1[i].value);
+				}
+			
+			json = {fieldName:s.value,sport:arr5};
+				 arr1.push(json);
+				 show();
+		}
+
+		function updates(){
+			let st = [];
+			let ct = [];
+
+				 name = document.getElementById('name1').value;
+			let s1 = document.getElementsByName('sport');
+			for(let i=0;i<s1.length;i++)
+				if(s1[i].checked==true){
+					st.push(s1[i].value);
+				}
+				let find = arr1.find(function(ele){
+					return ele.fieldName==name;
+				});
+				
+
+				let sportArr = find.sport;
+				for(let i=0;i<st.length;i++){
+
+				function check(checks,array){
+					let checkedArr = array.find(function(ele){
+						return ele==checks;
+					});
+					if(checkedArr!=undefined)
+						return true;
+					else 
+						return false;
+				}
+				}
+				let arrz = st.map(function(ele){
+					if(check(ele,sportArr)==false)
+						 ct.push(ele);
+						return ele;
+					
+				});
+				find.sport = [];
+				
+				find.sport.push(ct);
+				show();
+
+		}
+	
+
+		function edit(name){
+			let update = arr1.find(function(ele){
+				return ele.fieldName==name;
+			});
+			let s1;
+			let st = document.getElementsByName('sport');
+				
+			let sportArr = update.sport;
+			for(let i=0;i<arr.length;i++){
+
+				function check(checks,array){
+					let checkedArr = array.find(function(ele){
+						return ele==checks;
+					});
+					if(checkedArr!=undefined)
+						return true;
+					else 
+						return false;
+				}
+		
+		}
+
+		let arrz = arr.map(function(ele){
+				if(check(ele,sportArr)==true){
+					return '<input type="radio" checked name="sport" value="'+ele+'">'+ele+'<br/>';
+				}
+				else{
+					return '<input type="radio"  name="sport" value="'+ele+'">'+ele+'<br/>';
+				}
+			});
+
+			let str = '<input type="text" id="name1" readOnly value=\''+update.fieldName+'\'><br/>';
+			let btn = '<button onclick="updates()">Updates</button>';
+			let div = document.getElementById('task6');
+			div.innerHTML = str + arrz.join('') + btn;
+
+
+		}
+		
+
+		
+	</script>
+
+</body>
+</html>

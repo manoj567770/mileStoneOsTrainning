@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="css/task1d.css" />
+</head>
+<body>
+	<h3 id="name" class="showBlue">Seller : Jack Smith</h3>
+	<h3 id="email" class="showBlue">jack@email.com</h3>
+	<h3 id="mobile" class="showBlue">Mobile : 968852146</h3>
+	<button onclick="changeStyleName()">Change Name Style</button>
+	<button onclick="changeStyleAll()">All Green</button>
+	<button onclick="clearStyle()">Clear Style</button>
+	<script>
+		const ids = ['name','email','mobile'];
+		function changeStyleName(){
+			let element = ids.getElementById('name');
+			element.className = 'showGreen';
+		}
+		function changeStyleAll(){
+			for(let i=0;i<ids.length;i++){
+				let element = document.getElementById(ids[i]);
+				element.className = 'showGreen';
+			}
+		}
+		function clearStyle(){
+			for(let i=0;i<ids.length;i++){
+				let element = document.getElementById(ids[i]);
+				element.className = ' ';
+			}
+
+		}
+	</script>
+
+</body>
+</html>

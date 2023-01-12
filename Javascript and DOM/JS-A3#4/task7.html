@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="css/task7.css" />
+</head>
+<body>
+	<div id="task7"></div>
+
+	<script>
+		let nArr = ["Jack", "Tim", "Bob", "Mary", "Anna", "Martha", "Steve", "Ed", "John", "Sid"];
+		let arr = [];
+
+show();
+
+function show(){
+		const arr2 = nArr.map(function(ele){
+				let s1 = '<tr>';
+				if(arr.length>4){
+				 s1+= '<td class=\'\'>'+'<input type="checkbox" disabled onclick=\'remove(\"'+ele+'")\' id="element" name="name" value="'+ele+'">'+ele+'</td>';
+				}else{
+					s1+= '<td class=\'\'>'+'<input type="checkbox" onclick=\'remove(\"'+ele+'")\' id="element" name="name" value="'+ele+'">'+ele+'</td>';
+				}
+
+				 s1+= '</tr>';	
+				return s1;
+			});
+
+		let showArr = arr.map(function(ele){
+			let s1 = '<tr>';
+			s1+= '<td>'+ele+'<button onclick=\'deletes(\"'+ele+'")\'>x</button>'+'</td>';
+			s1+='</tr>';
+			return s1 ;
+		});
+
+			let html = '<table class=\'table1\'>'+'</br>'+'Applicant'+arr2.join('')+'<br/>'+'</table1>';
+			html+= '<table class=\'table1\'>'+'Team'+showArr.join('')+'<br/>'+'</table1>';
+			let element = document.getElementById('task7');
+			element.innerHTML = html;
+		
+		}
+
+		function deletes(name){
+			
+				let index = arr.findIndex(function(st){
+				return st==name;
+			});
+	
+					arr.splice(index,1);
+					nArr.push(name);
+			
+			
+			show();
+		}
+
+
+
+		function remove(name){
+			let names = document.getElementsByName('name');
+			for(let i=0;i<names.length;i++){
+				if(names[i].checked==true){
+				let index = nArr.findIndex(function(st){
+				return st==name;
+			});
+					nArr.splice(index,1);
+					arr.push(names[i].value);
+
+				}
+			}
+			
+			show();
+		}
+
+
+	</script>
+		
+
+</body>
+</html>

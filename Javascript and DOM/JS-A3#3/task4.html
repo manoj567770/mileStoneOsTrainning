@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="css/task4.css" />
+</head>
+<body>
+	Name:<input type="text" id="t1" onblur="number(this)"><br/>
+	<div id="d1"></div>
+	Age:<input type="text" id="t2" onblur="number1(this)"><br/>
+	<div id="d2"></div>
+	City:<input type="text" id="t3" onblur="number2(this)"><br/>
+	<div id="d3"></div>
+	Technology:<input type="text" id="t4" onblur="number3(this)"><br/>
+	<div id="d4"></div>
+	
+	<button id="btn1" onclick="add()">Add Person</button>
+	<div id="d5"></div>
+	
+
+	<script>
+		const arr = [{"name":"Jack","age":28,"city":"London","tech":"Android"},
+		{"name":"Mary","age":32,"city":"Paris","tech":"React"},
+		{"name":"Bob","age":35,"city":"New York","tech":"Angular"},
+		{"name":"Steve","age":26,"city":"Delhi","tech":"Spring"}];
+
+
+		show();
+
+		function show(){
+			const arr1 = arr.map(function(ele){
+			let str = ele.name+' ' + ele.age+' ' + ele.city+' ' + ele.tech + '<br/>';
+				return str;
+			});
+			let html = arr1.join('');
+			let element = document.getElementById('d5');
+			element.innerHTML = html;
+		}
+
+		function add(){
+			let st = {};
+			st.name = document.getElementById('t1').value;
+			st.age = document.getElementById('t2').value;
+			st.city = document.getElementById('t3').value;
+			st.tech = document.getElementById('t4').value;
+			arr.push(st);
+			show();
+		}
+		
+
+
+		function number(elem){
+			flag = false;
+		let txtField1 = document.getElementById("t1");
+		let txt1 = txtField1.value;
+		let arr1 = arr.map(function(ele){
+				return ele.name;
+		});
+		let len = arr1.length;
+		for(let i=0;i<len;i++){
+			if(arr1[i]==txt1){
+				flag = true;
+			}
+		}
+		if(flag==true){
+			let errDiv = document.getElementById("d1");
+				errDiv.innerHTML = "Name Already Exist";
+				errDiv.className = 'error';
+				let btn = document.getElementById('btn1');
+				btn.disabled = true;
+		}else{
+			let errDiv = document.getElementById("d1");
+				errDiv.innerHTML = "";
+				errDiv.className = '';
+				let btn = document.getElementById('btn1');
+				btn.disabled = false;
+		}
+
+	}
+	function number1(elem){
+		let txtField1 = document.getElementById("t2");
+		let txt1 = txtField1.value;
+
+		if(txt1<18){
+			let errDiv = document.getElementById("d2");
+				errDiv.innerHTML = "Minimum age should be 18 years";
+				errDiv.className = 'error';
+				let btn = document.getElementById('btn1');
+				btn.disabled = true;
+		}else{
+			let errDiv = document.getElementById("d2");
+				errDiv.innerHTML = "";
+				errDiv.className = '';
+				let btn = document.getElementById('btn1');
+				btn.disabled = false;
+		}
+		}
+		function number2(elem){
+			flag = false;
+		let txtField1 = document.getElementById("t3");
+		let txt1 = txtField1.value;
+		let arr1 = arr.map(function(ele){
+					return ele.city;
+		});
+		let len = arr1.length;
+		
+		for(let i=0;i<len;i++){
+			if(arr1[i]==txt1){
+				flag = true;
+			}
+		}
+			if(flag==true){
+			let errDiv = document.getElementById("d3");
+				errDiv.innerHTML = "";
+				errDiv.className = '';
+				let btn = document.getElementById('btn1');
+				btn.disabled = false;
+			}
+		else {
+			let errDiv = document.getElementById("d3");
+				errDiv.innerHTML = "Enter city from London,Paris,Delhi,New York";
+				errDiv.className = 'error';
+				let btn = document.getElementById('btn1');
+				btn.disabled = true;
+		}
+		
+		}
+
+		function number3(elem){
+			flag = false;
+		let txtField1 = document.getElementById("t4");
+		let txt1 = txtField1.value;
+		let arr1 = arr.map(function(ele){
+					return ele.tech;
+		});
+		let len = arr1.length;
+		
+		for(let i=0;i<len;i++){
+			if(arr1[i]==txt1){
+				flag = true;
+			}
+		}
+			if(flag==true){
+			let errDiv = document.getElementById("d4");
+				errDiv.innerHTML = "";
+				errDiv.className = '';
+				let btn = document.getElementById('btn1');
+				btn.disabled = false;
+			}
+		else {
+			let errDiv = document.getElementById("d4");
+				errDiv.innerHTML = "Enter city from London,Paris,Delhi,New York";
+				errDiv.className = 'error';
+				let btn = document.getElementById('btn1');
+				btn.disabled = true;
+		}
+		
+		}
+
+
+		
+
+
+
+
+	</script>
+
+</body>
+</html>

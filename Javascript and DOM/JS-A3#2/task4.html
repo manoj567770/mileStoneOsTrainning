@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="css/task4.css"/>
+</head>
+<body>
+	<div id="persons"></div>
+	<script>
+		
+		let arr = [{name:'Jack',oldwt:65,newwt:68},
+			{name:'Mary',oldwt:55,newwt:53},
+			{name:'Bob',oldwt:71,newwt:66},
+			{name:'Steve',oldwt:62,newwt:68},
+			{name:'James',oldwt:81,newwt:77},
+			{name:'Julia',oldwt:52,newwt:52},
+			{name:'Micheal',oldwt:68,newwt:68},
+			{name:'Bill',oldwt:60,newwt:61},
+			{name:'Sonny',oldwt:61,newwt:60}];
+
+			let darr = [];
+	for(let i=40;i<=100;i++){
+		darr.push(i);
+	}
+
+
+			show();
+
+
+
+			function showArr(arr2){
+			const arr1 = arr2.map(function(ele){
+				let str = '<tr>';
+				if(ele.oldwt>ele.newwt){
+					str+='<td class="green">'+ele.name+'</td>';
+				}else if(ele.oldwt<ele.newwt){
+					str+='<td class="red">'+ele.name+'</td>';
+				}else{
+					str+='<td class="gray">'+ele.name+'</td>';
+				}
+				if(ele.oldwt>ele.newwt){
+					str+='<td class="green" id="oldwt">'+ele.oldwt+'</td>';
+				}else if(ele.oldwt<ele.newwt){
+					str+='<td class="red" id="oldwt">'+ele.oldwt+'</td>';
+				}else{
+					str+='<td class="gray" id="oldwt">'+ele.oldwt+'</td>';
+				}
+				if(ele.oldwt>ele.newwt){
+					str+='<td class="green" id="newwt">'+ele.newwt+'</td>';
+				}else if(ele.oldwt<ele.newwt){
+					str+='<td class="red" id="newwt">'+ele.newwt+'</td>';
+				}else{
+					str+='<td class="gray" id="newwt">'+ele.newwt+'</td>';
+				}
+
+				str+='</tr>';
+				return str;
+			});
+			let header = '<tr>';
+			header+= 'New Weight between';
+			header+= makeCoursesDD3('oldwt',darr,'Select min wt','');
+			header+= makeCoursesDD4('newwt',darr,'Select max wt','')+'</br>';
+			header+='<button onclick="filterWeight()">Filter</button>';
+			header+='<button onclick="clearFilter()">Clear Filter</button>';
+			header+='<button onclick="addMember()">Add New Member</button>';
+			header+= '<th class=\"th1\" onclick=\'sort(0)\'>Name</th>';
+			header+= '<th class=\"th1\" onclick=\'sort(1)\'>Old Weight</th>';
+			header+= '<th class=\"th1\" onclick=\'sort(2)\'>New Weight</th>';
+			header+='</tr>';
+			let html = '<table class="table1">'+header+arr1.join('')+'</table>';
+		return html;
+	}
+
+	function addMember(){
+		let str = 'Name: <input type = "text" id = "name"></br>';
+			str+= makeCoursesDD1('oldwt',darr,'Select Old Age','')+'</br>';
+			str+= makeCoursesDD2('newwt',darr,'Select New age','')+'</br>';
+			str+= '<button onClick=\'add()\'>Add</button>';
+			let div = document.getElementById('persons');
+			div.innerHTML = str;
+
+	}
+	function clearFilter(){
+		show();
+	}
+
+	
+	
+	function add(){
+		let st = {};
+			st.name = document.getElementById('name').value;
+			st.oldwt = document.getElementById('oldwt').value;
+			st.newwt = document.getElementById('newwt').value;
+			arr.push(st);
+			show();
+	}
+
+	function makeCoursesDD1(id,arr,firstItem,selValue){
+			let arr1 = arr.map(function(opt){
+				if(opt==selValue)
+				return '<option selected>'+opt+'</option>';
+			else
+				return '<option>'+opt+'</option>';
+			});
+			let first = '<option disabled selected>'+firstItem+'</option>';
+			if(selValue!='')
+				first = '<option disabled>'+firstItem+'</option>';
+			let s1 = '<select id="oldwt">'+first + arr1.join('')+'</select>';
+			return s1; 
+		}
+		function makeCoursesDD2(id,arr,firstItem,selValue){
+			let arr1 = arr.map(function(opt){
+				if(opt==selValue)
+				return '<option selected>'+opt+'</option>';
+			else
+				return '<option>'+opt+'</option>';
+			});
+			let first = '<option disabled selected>'+firstItem+'</option>';
+			if(selValue!='')
+				first = '<option disabled>'+firstItem+'</option>';
+			let s1 = '<select id="newwt">'+first + arr1.join('')+'</select>';
+			return s1; 
+		}
+		function makeCoursesDD3(id,arr,firstItem,selValue){
+			let arr1 = arr.map(function(opt){
+				if(opt==selValue)
+				return '<option selected>'+opt+'</option>';
+			else
+				return '<option>'+opt+'</option>';
+			});
+			let first = '<option disabled selected>'+firstItem+'</option>';
+			if(selValue!='')
+				first = '<option disabled>'+firstItem+'</option>';
+			let s1 = '<select id="oldwt">'+first + arr1.join('')+'</select>';
+			return s1; 
+		}
+		function makeCoursesDD4(id,arr,firstItem,selValue){
+			let arr1 = arr.map(function(opt){
+				if(opt==selValue)
+				return '<option selected>'+opt+'</option>';
+			else
+				return '<option>'+opt+'</option>';
+			});
+			let first = '<option disabled selected>'+firstItem+'</option>';
+			if(selValue!='')
+				first = '<option disabled>'+firstItem+'</option>';
+			let s1 = '<select id="newwt">'+first + arr1.join('')+'</select>';
+			return s1; 
+		}
+
+	function filterWeight(){
+			let s2 = document.getElementById('oldwt').value;
+			let s3 = document.getElementById('newwt').value;
+			let arr1 = arr.filter(function(ele){
+				if(ele.newwt>s2 && ele.newwt<s3){
+					return ele.newwt;
+				}
+				else if(ele.oldwt>s2 && ele.oldwt<s3){
+					return ele.oldwt;
+				}
+
+			});
+			let s1 = showArr(arr1);
+			let element = document.getElementById('persons');
+			element.innerHTML = s1;
+			
+	}
+	function show(){
+		let s1 = showArr(arr);
+		let element = document.getElementById('persons');
+		element.innerHTML = s1 ;
+	}
+	function sort(num){
+			if(num==0)
+				return arr.sort(sortName);
+			
+			else if(num==1)
+				return arr.sort(oldWeight);
+			
+			else
+				return arr.sort(newWeight);
+			
+			show();
+		}
+			function sortName(st1,st2){
+			return st1.name.localeCompare(st2.name);
+		}
+		function oldWeight(st1,st2){
+			return st1.oldwt - st2.oldwt;
+		}
+		function newWeight(st1,st2){
+			return st1.newwt - st2.newwt;
+		}
+	</script>
+
+</body>
+</html>

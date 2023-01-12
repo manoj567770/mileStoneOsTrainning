@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<div id="task9"></div>
+	<script>
+
+		const skill = ['Beginner','Intermidiate','Good','Excellence'];
+		const tech = ['JavaScript','Python','Java','Android','IoS'];
+
+		show(tech);
+		function show(array){
+			const arr = array.map(function(ele){
+				let s1 = '<input type="checkbox" id="element" onclick="check()" name="tech" value="'+ele+'">'+ele+'<br/>';
+				return s1;
+			});
+			
+			 html = arr.join('');
+			let element = document.getElementById("task9");
+			element.innerHTML = html;
+			return html;
+		}
+		function check(){
+			const arr = skill.map(function(ele){
+				let s1 = '<input type="radio" id="element" name="tech" value="'+ele+'">'+ele;
+				return s1;
+			});
+			
+			let s1 = document.getElementsByName('tech');
+			for(let i=0;i<s1.length;i++)
+				if(s1[i].checked)
+					html = arr.join('');
+			let element = document.getElementById("task9");
+			element.innerHTML = 'What is Your Level:'+ html +'</br>'+show(tech);
+		
+		}
+		
+
+
+
+
+
+
+	</script>
+
+</body>
+</html>

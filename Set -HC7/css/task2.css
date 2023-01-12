@@ -1,0 +1,28 @@
+body{
+	background-color: slateblue;
+}
+.header{
+	color: white;
+	margin-left: 40%;
+}
+form{
+	margin-left: 80px;
+	margin-right: 40px;
+	color: white;
+	padding: 5px;
+	background-color: darkblue;
+}
+input[type=text]{
+	width: 90%;
+}
+select{
+	width: 90%;
+}
+textarea{
+	width: 90%;
+}
+button{
+	background: darkgreen;
+	color: white;
+	width: 90%;
+}

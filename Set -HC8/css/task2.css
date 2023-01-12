@@ -1,0 +1,52 @@
+h1{
+	float: left;
+}
+.header ul,li,a{
+	float: right;
+	
+}
+.header li,a{
+	padding: 10px;
+	list-style: none;
+	display: inline;
+	color: white;
+}
+.header h3{
+	margin-left: 950px;
+	margin-top: 50px;
+	color: lawngreen;
+}
+.hello{
+	margin-top: 200px;
+}
+.hello h2{
+	color: lawngreen;
+}
+.main{
+	background-color: darkgreen;
+	color: white;
+}
+button{
+	width: 100px;
+	height: 40px;
+	border: 1px solid red;
+}
+nav{
+	display: flex;
+	justify-content: space-around;
+}
+.image h4{
+	color: red;
+}
+.image1 h4{
+	color: red;
+}
+.image2 h4{
+	color: red;
+}
+.main1{
+	background-color: darkgreen;
+}
+.main1 ul li{
+	list-style: none;
+}

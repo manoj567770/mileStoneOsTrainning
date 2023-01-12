@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="css/task7.css"/>
+</head>
+<body>
+	<div id="showdata"></div>
+	<script>
+		let products = [{prod:'Pepsi',price:15,stock:20},
+		{prod:'Coke',price:18,stock:30},
+		{prod:'Maggi',price:10,stock:35},
+		{prod:'Nescafe',price:40,stock:10},
+		{prod:'DairyMilk',price:30,stock:12},
+		{prod:'FritoLays',price:20,stock:15}];
+let order = [];
+		show();
+	function show(){
+		let s1 = showProducts();
+		let s2 = showMyCart();
+		let element = document.getElementById('showdata');
+		element.innerHTML = s1 + s2;
+	}
+	function showProducts(){
+		let rMap = products.map(function(ele){
+		str = '<tr>';
+		str+= '<td class="col1">'+ele.prod+'</td>';
+		str+= '<td class="col1">'+ele.price+'</td>';
+		str+= '<td class="col1">'+ele.stock+'</td>';
+		str+= '<td class="col1"><button class="cart" onclick=cart("'+ele.prod+'")>Add To Cart</button>';
+		str+='</tr>';
+		return str;
+	});
+		let header = '<tr>';
+		header+= '<th class="th1">Product</th>';
+		header+= '<th class="th1">Price</th>';
+		header+= '<th class="th1">Stock</th>';
+		header+= '<th class="th1"></th>';
+		header+='</tr>';
+		let html = '<h2>List of Products</h2>';
+		html+='<table class="table1">'+header+rMap.join('')+'</table>';
+		return html;
+	}
+
+	function showMyCart(){
+		let fMap = order.map(function(ele){
+		str = '<tr>';
+		str+= '<td class="col1">'+ele.prod+'</td>';
+		str+= '<td class="col1">'+ele.quantity+'</td>';
+		str+= '<td class="col1">'+ele.price+'</td>';
+		str+= '<td class="col1">'+ele.amount+'</td>';
+		str+= '<td class="remove"><button  class="cart1" onclick=remove("'+ele.prod+'")>Remove From Cart</button></button></td>'
+		str+='</tr>';
+		return str;
+	});
+		let header = '<tr>';
+		header+= '<th class="th1">Product</th>';
+		header+= '<th class="th1">Quantity</th>';
+		header+= '<th class="th1">Price</th>';
+		header+= '<th class="th1">Amount</th>';
+		header+= '<th class="th1"></th>';
+		header+='</tr>';
+		let html = '<h2>My Cart</h2>';
+		if(order.length==0)
+			html+= '<h3>Cart is Empty</h3>';
+		else{
+			let countqty = order.reduce(function(acc,curr){
+				return acc + curr.quantity;
+			},0);
+			console.log(countqty);
+			let countqty1 = order.reduce(function(acc,curr){
+				return acc + curr.amount;
+			},0);
+		html+='<h3>Number of items : '  + countqty + ' Bill Amount : ' + countqty1 + '</h3>';
+			html+='<table class="table1">'+header+fMap.join('')+'</table>';
+		}
+		return html;
+	}
+	function cart(prod){
+		let r1 = order.find(function(ele){
+			return ele.prod==prod;
+		});
+
+		if(r1){
+		r1.quantity++;
+	r1.amount = r1.amount + r1.price;
+}
+		else{
+			let prod1 = products.find(function(ele){
+				return ele.prod==prod;
+			});
+			let item = {prod:prod1.prod,quantity:1,price:prod1.price,amount:prod1.price};
+			order.push(item);
+		}
+		show();
+	}
+	function remove(prod){
+		let index = order.findIndex(function(ele){
+			return ele.prod==prod;
+		});
+		if(index>=0){
+			order.splice(index,1);
+		}
+		show();
+	}
+	</script>
+</body>
+</html>

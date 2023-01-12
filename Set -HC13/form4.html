@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<link href="style.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://m.w3newbie.com/you-tube.css">
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+
+	<div class="container p-2">
+	<form>
+		<h3>Costomer Details</h3>
+		<div class="form-group row">
+			<div class="col-md-6">
+				<label for="text1">First Name</label>
+				<input type="text" class="form-control" id="text1">
+			</div>
+			<div class="col-md-6">
+				<label for="text2">Last Name</label>
+				<input type="text" class="form-control" id="text2">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="email1">Email</label>
+			<input type="email" class="form-control" id="email1" placeholder="myemail@example.com">
+		</div>
+
+		<div class="form-group">
+			<label for="number1">Email</label>
+			<input type="text" class="form-control" id="number1">
+		</div>
+
+		<div class="form-group">
+			<h4>Billing Address</h4>
+			<label for="address1">Address</label>
+			<input type="text" class="form-control" id="address1">
+		</div>
+
+
+		<div class="form-group row">
+			<div class="col-md-4">
+				<label for="city1">City</label>
+				<select class="form-control" id="city1">
+				<option>Delhi</option>
+				<option>Mumbai</option>
+				<option>Banglore</option>
+			</select>
+			</div>
+			<div class="col-md-4">
+				<label for="state1">State</label>
+				<select class="form-control" id="state1">
+				<option>Jharkhand</option>
+				<option>Bihar</option>
+				<option>Bengal</option>
+			</select>
+			</div>
+			<div class="col-md-4">
+				<label for="code">Pin code</label>
+				<input type="text" class="form-control" id="code">
+			</div>
+		</div>
+
+
+		<div class="form-check">
+			<input type="checkbox" class="form-check-input" id="promoMails">
+			<label class="form-check-label" for="promoMails">Shipping address is the same as my billing address</label>
+		</div>
+		<div class="form-check">
+			<input type="checkbox" class="form-check-input" id="prodUpdates">
+			<label class="form-check-label" for="prodUpdates">Save this information</label>
+		</div>
+
+		<hr>
+
+		<h4>Payment</h4>
+		<div class="form-check">
+			<input type="radio" name="radio" class="form-check-input" id="credit">
+			<label class="form-check-label" for="credit">Credit Card</label>
+		</div>
+		<div class="form-check">
+			<input type="radio" name="radio" class="form-check-input" id="debit">
+			<label class="form-check-label" for="debit">Debit Card</label>
+		</div>
+		<div class="form-check">
+			<input type="radio" name="radio" class="form-check-input" id="net">
+			<label class="form-check-label" for="net">Net Banking</label>
+		</div>
+
+
+		<div class="form-group row">
+			<div class="col-md-6">
+				<label for="text3">Name on card</label>
+				<input type="text" class="form-control" id="text3">
+				<small id="help" class="form-text text-muted">Full name as display on Card</small>
+			</div>
+			<div class="col-md-6">
+				<label for="text4">Credit Card Number</label>
+				<input type="text" class="form-control" id="text4">
+			</div>
+		</div>
+
+
+		<div class="form-group row">
+			<div class="col-md-3">
+				<label for="text5">Expiration</label>
+				<input type="text" class="form-control" id="text5">
+			</div>
+			<div class="col-md-3">
+				<label for="text6">CVV</label>
+				<input type="text" class="form-control" id="text6">
+			</div>
+		</div>
+
+
+		<div class="form-group row">
+			<label for="profession1" class="col-sm-2 col-form-label"></label>
+			<div class="col-sm-12">
+				<button type="button" class="btn btn-primary btn-lg btn-block">Continue to checkout</button>
+			</div>	
+		</div>
+	</form>
+</body>
+</html>

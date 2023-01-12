@@ -1,0 +1,27 @@
+.th1 {
+	background-color: lightblue;
+	color: white;
+	text-align: center;
+	padding-left: 15px;
+	padding-right: 15px;
+
+}
+.th2 {
+	background-color: lightgreen;
+	color: white;
+	text-align: center;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.th3 {
+	background-color: lightpink;
+	color: white;
+	text-align: center;
+	padding-left: 15px;
+	padding-right: 15px;
+
+}
+.table1 {
+	border: 1px solid black;
+	border-collapse: collapse;
+}

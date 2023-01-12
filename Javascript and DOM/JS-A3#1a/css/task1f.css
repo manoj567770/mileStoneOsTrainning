@@ -1,0 +1,14 @@
+.table{
+	background: blue;
+	float: left;
+	width: 20%;
+	border: 1px solid #000;
+}
+.table1{
+	margin-right: 100px;
+	margin-left: 200px;
+	margin-top: 0px;
+	width: 20%;
+border: 1px solid #000;
+	background: green;
+}

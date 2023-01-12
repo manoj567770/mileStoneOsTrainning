@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="css/task3a.css" />
+</head>
+<body>
+	<div id="persons"></div>
+	<script>
+		const persons = [{name:'Jack',age:28,city:'London',technology:'Android'},
+		{name:'Mary',age:32,city:'Paris',technology:'React'},
+		{name:'Bob',age:35,city:'New York',technology:'Angular'},
+		{name:'Steve',age:26,city:'Delhi',technology:'Spring'}];
+
+		let arr = ['London','Paris','Delhi','NewYork'];
+		let arr3 = ['Android','React','Angular','Spring','Javascript'];
+
+		showPersons();
+
+		
+		function showPersons(){
+			const arr1 = persons.map(function(ele){
+				let str = '<tr>';
+				str+='<td class="td1">'+ele.name+'</td>';
+				str+='<td class="td1">'+ele.age+'</td>';
+				str+='<td class="td1">'+ele.city+'</td>';
+				str+='<td class="td1">'+ele.technology+'</td>';
+				str+='</tr>';
+				return str;
+			});
+			let header = '<tr>';
+			header+= 'Name:<input type="text" id="name"><br/>';
+			header+= 'Age:<input type="text" id="age"><br/>';
+			header+= 'City:'+ makeCodeDD('city',arr,'Select City','')+'<br/>';
+			header+= 'Technology:'+makeCodeDD1('tech',arr3,'Select Tech','')+'<br/>';
+			header+= '<button onclick="addPerson()" id="add">Add Person</button>';
+			header+= '<button onclick="removePerson()" id="remove">Remove Person</button><br/>';
+			header+= '<button onclick="manageCity()" id="managecity">Manage Cities</button>';
+			header+= '<button onclick="manageTech()" id="managetech">Manage Techs</button>';
+			header+='</tr>';
+			let html = '<table class=\'table1\'>'+header+arr1.join('')+'</table1>';
+			let element = document.getElementById('persons');
+			element.innerHTML = html;
+		}
+
+		function manageCity(){
+			const arr1 = persons.map(function(ele){
+				let str = '<tr>';
+				str+='<td class="td1">'+ele.city+'</td>';
+				str+= '<td><button class=\'btn\' onclick=\'removeCity(\"'+ele.city+'")\'>Remove</button></td>';
+				str+='</tr>';
+				return str;
+			});
+			let header = '<tr>';
+			header+= '<h3>List of Cities</h3>';
+			header+= '<input type="text" id="city"><br/>';
+			header+= '<button onclick="addCities()" id="add">Add</button><br/>';
+			header+= '<button onclick="showForm()" id="main">Show Main Form</button><br/>';
+			header+='</tr>';
+			let html = '<table class=\'table1\'>'+header+arr1.join('')+'</table1>';
+			let element = document.getElementById('persons');
+			element.innerHTML = html;
+		}
+		function showForm(){
+			showPersons();
+		}
+
+		function addCities(){
+			let st = {};
+			st.city = document.getElementById('city').value;
+			arr.push(st.city);
+			persons.push(st);
+			manageCity();
+		}
+
+		function removeCity(city){
+			let index = persons.findIndex(function(st){
+				return st.city==city;
+			});
+			persons.splice(index,1);
+			manageCity();
+		}
+		function manageTech(){
+			const arr1 = persons.map(function(ele){
+				let str = '<tr>';
+				str+='<td class="td1">'+ele.technology+'</td>';
+				str+= '<td><button class=\'btn\' onclick=\'removeTech(\"'+ele.technology+'")\'>Remove</button></td>';
+				str+='</tr>';
+				return str;
+			});
+			let header = '<tr>';
+			header+= '<h3>List of Techs</h3>';
+			header+= '<input type="text" id="tech"><br/>';
+			header+= '<button onclick="addTechs()" id="add">Add</button><br/>';
+			header+= '<button onclick="showForm()" id="main">Show Main Form</button><br/>';
+			header+='</tr>';
+			let html = '<table class=\'table1\'>'+header+arr1.join('')+'</table1>';
+			let element = document.getElementById('persons');
+			element.innerHTML = html;
+		}
+
+		function addTechs(){
+			let st = {};
+			st.technology = document.getElementById('tech').value;
+			arr3.push(st.technology);
+			persons.push(st);
+			manageTech();
+		}
+
+		function removeTech(technology){
+			let index = persons.findIndex(function(st){
+				return st.technology==technology;
+			});
+			persons.splice(index,1);
+			manageTech();
+		}
+
+
+
+		function addPerson(){
+			let st = {};
+			let element = document.getElementById('name').value;
+			
+			let arr1 = persons.find(function(ele){
+				return ele.name==element;
+			});
+			if(arr1){
+				 alert('Name already Exist');
+				}
+			else{
+			st.name = document.getElementById('name').value;
+			st.age = document.getElementById('age').value;
+			st.city = document.getElementById('city').value;
+			st.technology = document.getElementById('tech').value;
+			persons.push(st);
+			showPersons();
+		}
+		}
+		function removePerson(){
+		let element = document.getElementById('name').value;
+		let index = persons.findIndex(function(st){
+				return st.name==element;
+			});
+		if(index==-1){
+			alert('no person found with the name')
+		}else{
+			persons.splice(index,1);
+			showPersons();
+		}
+		}
+		function makeCodeDD(id,persons,first,selVal){
+			const arr4 = persons.map(function(opt){
+				if(opt==selVal)
+					return '<option selected>'+opt+'</option>';
+				else
+					return '<option>'+opt+'</option>';
+			});
+			let header = '<option disabled>'+first+'</option>';
+			if(selVal=='')
+				header = '<option disabled selected>'+first+'</option>';
+			let s1 = '<select id=\''+id+'\'>'+header+arr4.join('')+'</select>';
+			return s1;
+		}
+		function makeCodeDD1(id,persons,first,selVal){
+			const arr4 = persons.map(function(opt){
+				if(opt==selVal)
+					return '<option selected>'+opt+'</option>';
+				else
+					return '<option>'+opt+'</option>';
+			});
+			let header = '<option disabled>'+first+'</option>';
+			if(selVal=='')
+				header = '<option disabled selected>'+first+'</option>';
+			let s1 = '<select id=\''+id+'\'>'+header+arr4.join('')+'</select>';
+			return s1;
+		}
+
+</script>
+
+</body>
+</html>

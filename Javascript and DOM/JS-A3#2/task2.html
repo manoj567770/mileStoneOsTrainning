@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="css/task2.css" />
+</head>
+<body>
+	<div id="dispProduct"></div>
+	
+	<script>
+		let products = [{product:'Maggi',quantity:28},
+		{product:'Perk',quantity:7},
+		{product:'Gems',quantity:11},
+		{product:'Lindt',quantity:4},
+		{product:'Nutties',quantity:20}];
+
+		show();
+
+			function show(){
+			const arr1 = products.map(function(ele){
+				let str = '<tr>';
+				str+='<td class="td1" id="product">'+ele.product+'</td>';
+				str+='<td class="td1" id="qty">'+ele.quantity+'</td>';
+				str+= '<td><button class=\'btn\' onclick=\'remove(\"'+ele.product+'")\'>Remove</button></td>';
+				str+= '<td><button class=\'btn\' onclick=\'edit(\"'+ele.product+'")\'>Edit</button></td>';
+				str+='</tr>';
+				return str;
+			});
+			let header = '<tr>';
+			header+= 'Product:<input type="text" id="name"><br/>';
+			header+= 'Quantity:<input type="text" id="qty"><br/>';
+			header+= '<button onclick="addProduct()" id="add">Add Products</button><br/>'
+			header+='</tr>';
+			let html = '<table class=\'table1\'>'+header+arr1.join('')+'</table1>';
+			let element = document.getElementById('dispProduct');
+			element.innerHTML = html;
+		}
+
+		function addProduct(){
+			let st = {};
+			st.product = document.getElementById('name').value;
+			st.quantity = document.getElementById('qty').value;
+			products.push(st);
+			show();
+		}
+		function remove(product){
+			let index = products.findIndex(function(st){
+				return st.product==product;
+			});
+			products.splice(index,1);
+			show();
+		}
+		function edit(product){
+			let st = products.find(function(st1){
+				return st1.product==product;
+			});
+
+			let str = 'Product:<input type="text" id="name1" readOnly value=\''+st.product+'\'><br/>';
+			str+= 'Quantity:<input type="text" id="qty1" value=\''+st.quantity+'\'><br/>';
+			str+= '<button onclick=\'edit2()\'>Update</button>';
+			let div = document.getElementById('dispProduct');
+			div.innerHTML = str;
+
+		}
+		function edit2(){
+			let product = document.getElementById('name1').value;
+			let st = products.find(function(st1){
+				return st1.product==product;
+			});
+			st.quantity = document.getElementById('qty1').value;
+			show();
+		}
+	</script>
+
+</body>
+</html>

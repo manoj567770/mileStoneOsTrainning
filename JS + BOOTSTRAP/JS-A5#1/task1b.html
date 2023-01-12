@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<link href="style.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://m.w3newbie.com/you-tube.css">
+</head>
+<body>
+	<div class="container">
+		<div id="show">
+			
+		</div>
+		
+	</div>
+
+	<script>
+		showForm();
+
+		function showForm(){
+			let str = makeTextField('prodName','Product Name','Enter the Product name');
+				str+= makeTextField('price','Price','Enter the Price');
+				str+= '<button class="btn btn-primary" onclick="submitProduct()">Submit</button>';
+
+				document.getElementById('show').innerHTML = str;
+		}
+		function makeTextField(id,label,placeholder=''){
+					let str = '<div class="form-group">';
+					str+= '<label>'+label+'</label>';
+					str+= '<input type="text" class="form-control" id="'+id+'" placeholder="'+placeholder+'">';
+					str+= '</div>';
+					return str;
+		}
+	</script>
+</body>
+</html>

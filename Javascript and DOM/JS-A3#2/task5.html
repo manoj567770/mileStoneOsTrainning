@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="css/task5.css"/>
+</head>
+<body>
+	<div id="products"></div>
+	<button onclick="productMasters()">Product Master</button>
+	<script>
+		const productMaster = [{productName:'Pepsi',category:'soft drink',buyPrice:15,sellPrice:20},
+		{productName:'coke',category:'soft drink',buyPrice:10,sellPrice:21},
+		{productName:'DairyMilk',category:'chocolate',buyPrice:25,sellPrice:30},
+		{productName:'Maggi',category:'food',buyPrice:15,sellPrice:20},
+		{productName:'parleG',category:'biskit',buyPrice:30,sellPrice:40}];
+
+
+
+		const purchaseMaster = [{product:'Pepsi',quantity:10},
+								{product:'coke',quantity:45},
+								{product:'DairyMilk',quantity:15},
+								{product:'Maggi',quantity:35},
+								{product:'parleG',quantity:25}]
+
+				function purchase(){
+				const arr1 = purchaseMaster.map(function(ele){
+					let arr2 = productMaster.find(function(element){
+						return element;
+					});
+				let str = '<tr>';
+				str+='<td class="td1">'+ele.product+'</td>';
+				str+='<td class="td1">'+ele.quantity+'</td>';
+				str+='<td class="td1">'+arr2.sellPrice+'</td>';
+				str+='<td class="td1">'+arr2.sellPrice*ele.quantity+'</td>';
+				str+='</tr>';
+				return str;
+			});
+			let header = '<tr>';
+			header+='<th class=th1>Product</th>';
+			header+='<th class=th1>Quantity</th>';
+			header+='<th class=th1>Price</th>';
+			header+='<th class=th1>Value</th>';
+			header+= '<button onclick="newProduct()">New purchase</button>';
+			header+='</tr>';
+			let html = '<table class=\'table1\'>'+header+arr1.join('')+'</table1>';
+			let element = document.getElementById('products');
+			element.innerHTML = html;
+		}
+
+		const options = ['Food','Soap','Shampoo','Toothpaste'];
+		const prod = ['Pepsi','coke','DairyMilk','Maggi','parleG'];
+
+function newProduct(){
+			let str = 'Product Name';
+			str+= makeProductDD('pid',prod,'choose Product','')+'</br>';
+			str+= 'Quantity: <input type = "text" id = "qty"></br>';
+			str+= '<button onClick=\'addNewProd()\'>Add product</button>';
+			let div = document.getElementById('products');
+			div.innerHTML = str;
+		}
+
+		function makeProductDD(id,arr,firstItem,selValue){
+			let arr1 = arr.map(function(opt){
+				if(opt==selValue)
+				return '<option selected>'+opt+'</option>';
+			else
+				return '<option>'+opt+'</option>';
+			});
+			let first = '<option disabled selected>'+firstItem+'</option>';
+			if(selValue!='')
+				first = '<option disabled>'+firstItem+'</option>';
+			let s1 = '<select id="pid">'+first + arr1.join('')+'</select>';
+			return s1; 
+		}
+
+
+		function addNewProd(){
+			let data = {};
+			let v = document.getElementById('qty').value;
+			let z = document.getElementById('pid').value;
+			
+			let st = purchaseMaster.find(function(st1){
+				return st1.product==z;
+			});
+			st.quantity = +st.quantity+ +v;
+			purchase();
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		function productMasters(){
+			showProducts();
+		}
+
+		function showProducts(){
+			const arr1 = productMaster.map(function(ele){
+				let str = '<tr>';
+				str+='<td class="td1">'+ele.productName+'</td>';
+				str+='<td class="td1">'+ele.category+'</td>';
+				str+='<td class="td1">'+ele.buyPrice+'</td>';
+				str+='<td class="td1">'+ele.sellPrice+'</td>';
+				str+='</tr>';
+				return str;
+			});
+			let header = '<tr>';
+			header+='<th class=th1>Product Name</th>';
+			header+='<th class=th1>Category</th>';
+			header+='<th class=th1>Buying Price</th>';
+			header+='<th class=th1>Selling Price</th>';
+			header+= '<button onclick="addprod()">Add Products</button>';
+			header+= '<button onClick=\'purchase()\'>Purchase Master</button>';
+			header+='</tr>';
+			let html = '<table class=\'table1\'>'+header+arr1.join('')+'</table1>';
+			let element = document.getElementById('products');
+			element.innerHTML = html;
+		}
+			function addprod(){
+			let str = 'Product Name: <input type = "text" id = "pname"></br>';
+			str+= 'category :'
+			str+= makeCoursesDD(options,'choose category','')+'</br>';
+			str+= 'Buying Price: <input type = "text" id = "buying"></br>';
+			str+= 'Selling Price: <input type = "text" id = "selling"></br>';
+			str+= '<button onClick=\'add()\'>Add product</button>';
+			let div = document.getElementById('products');
+			div.innerHTML = str;
+		}
+
+		function makeCoursesDD(arr,firstItem,selValue){
+			let arr1 = arr.map(function(opt){
+				if(opt==selValue)
+				return '<option selected>'+opt+'</option>';
+			else
+				 return '<option>'+opt+'</option>';
+			});
+			let first = '<option disabled selected>'+firstItem+'</option>';
+			if(selValue!='')
+				first = '<option disabled>'+firstItem+'</option>';
+			let s1 = '<select id="category">'+first + arr1.join('')+'</select>';
+			return s1; 
+		}
+
+		function add(){
+
+			let data = {};
+			data.productName = document.getElementById('pname').value;
+			data.category = document.getElementById('category').value;
+			data.buyPrice = document.getElementById('buying').value;
+			data.sellPrice = document.getElementById('selling').value;
+
+			productMaster.push(data);
+			showProducts();
+			
+		}
+
+	</script>
+
+</body>
+</html>

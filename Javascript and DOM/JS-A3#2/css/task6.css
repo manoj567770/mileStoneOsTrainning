@@ -1,0 +1,15 @@
+.table1{
+	border: 5px solid white;
+	border-collapse: collapse;
+	margin-bottom: 10px;
+	background-color: lightskyblue;
+	color: white;
+}
+
+.table2{
+	border: 5px solid white;
+	border-collapse: collapse;
+	margin-bottom: 10px;
+	background-color: red;
+	color: white;
+}

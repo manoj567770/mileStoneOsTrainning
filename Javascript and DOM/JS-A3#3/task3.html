@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<input type="text" id="t1" placeholder="Only 0 or 1">
+	<input type="text" id="t2" placeholder="00010110" onfocus="number(this)"><br/><br/>
+	<input type="text" id="t3" placeholder="No b or B">
+	<input type="text" id="t4" onfocus="number1(this)"><br/><br/>
+	<input type="text" id="t5" placeholder="No Special Characters">
+	<input type="text" id="t6" onfocus="number2(this)"><br/><br/>
+	<input type="text" id="t7" placeholder="Only digits +-*/.">
+	<input type="text" id="t8" onfocus="number3(this)">
+	<div id="d1"></div>
+
+	<script>
+		function number(elem){
+			let txtField1 = document.getElementById("t1");
+			let txt1 = txtField1.value;
+			let len = txt1.length;
+			let arr = '';
+
+			for(let i=0;i<len;i++){
+			if(txt1[i]=='0' || txt1[i]=='1'){
+				arr = arr + txt1[i];
+			}
+		}
+		let txtField = document.getElementById("t2");
+			txtField.value = arr;
+		}
+		function number1(elem){
+			let txtField1 = document.getElementById("t3");
+			let txt1 = txtField1.value;
+			let len = txt1.length;
+			let arr = '';
+
+			for(let i=0;i<len;i++){
+			if(txt1[i]!='b' && txt1[i]!='B'){
+				arr = arr + txt1[i];
+			}
+		}
+		let txtField = document.getElementById("t4");
+			txtField.value = arr;
+		}
+
+		function number2(elem){
+			let txtField1 = document.getElementById("t5");
+			let txt1 = txtField1.value;
+			let len = txt1.length;
+			let arr = '';
+
+			for(let i=0;i<len;i++){
+			if(txt1[i]>='a' && txt1[i]<='z' || txt1[i]>='A' && txt1[i]<='Z' || txt1[i]>='0' && txt1[i]<='9'){
+				arr = arr + txt1[i];
+			}
+		}
+		let txtField = document.getElementById("t6");
+			txtField.value = arr;
+		}
+
+		function number3(elem){
+			let txtField1 = document.getElementById("t7");
+			let txt1 = txtField1.value;
+			let len = txt1.length;
+			let arr = '';
+
+			for(let i=0;i<len;i++){
+			if(txt1[i]=='+' || txt1[i]=='-' || txt1[i]=='*' ||txt1[i]=='/' || txt1[i]>='0' && txt1[i]<='9'){
+				arr = arr + txt1[i];
+			}
+		}
+		let txtField = document.getElementById("t8");
+			txtField.value = arr;
+		}
+
+
+	</script>
+
+</body>
+</html>

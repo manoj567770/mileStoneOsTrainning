@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+
+	<h2>Share Your Technical Capabilities</h2>
+
+	
+	<input type="checkbox" id="cb1" name="st" onchange="change(this)" >JavaScript</br>
+	<div id="task1"></div>
+	<input type="checkbox" id="cb2" name="st" onchange="change(this)" >Python</br>
+	<div id="task2"></div>
+	<input type="checkbox" id="cb3" name="st" onchange="change(this)" >Java</br>
+	<div id="task3"></div>
+	<input type="checkbox" id="cb4" name="st" onchange="change(this)" >Android</br>
+	<div id="task4"></div>
+	<input type="checkbox" id="cb5" name="st" onchange="change(this)" >IoS</br>
+	<div id="task5"></div>
+	<div id="task9"></div>
+
+	<script>
+
+		const skill = ['Beginner','Intermidiate','Good','Excellence'];
+		
+		function makeRadios(){
+			const arr2 = skill.map(function(ele){
+				let s1 = '<input type="radio" id="element" onclick="change()" name="sport" value="'+ele+'">'+ele;
+				return s1;
+			});
+			return arr2.join('');
+		}
+
+		function change(){
+			let value = '';
+			let s2 = '<input type="text">';
+
+			let technical = document.getElementsByName('sport');
+			
+
+			for(let i=0;i<technical.length;i++){
+				
+				if(technical[i].checked)
+					value = technical[i].value;
+			}
+				
+			let cb1 = document.getElementById('cb1');
+			if(cb1.checked==true){
+				document.getElementById("task1").innerHTML ='What is Your Level:'+ makeRadios();
+				if(value=='Good' || value=='Excellence'){
+					document.getElementById("task1").innerHTML ='What is Your Level:'+ makeRadios()+'<br/>'+'Share the Link of Project :'+s2;
+				}
+			}else{
+				document.getElementById("task1").innerHTML = '';
+			}
+
+			let cb2 = document.getElementById('cb2');
+			if(cb2.checked==true){
+				 document.getElementById("task2").innerHTML ='What is Your Level:'+ makeRadios();
+				 if(value=='Good' || value=='Excellence'){
+					document.getElementById("task2").innerHTML ='What is Your Level:'+ makeRadios()+'<br/>'+'Share the Link of Project :'+s2;
+				}
+			}else{
+				document.getElementById("task2").innerHTML = '';
+			}
+
+			let cb3 = document.getElementById('cb3');
+			if(cb3.checked==true){
+				 document.getElementById('task3').innerHTML ='What is Your Level:'+ makeRadios();
+				 if(value=='Good' || value=='Excellence'){
+					document.getElementById("task3").innerHTML ='What is Your Level:'+ makeRadios()+'<br/>'+'Share the Link of Project :'+s2;
+				}
+			}else{
+				document.getElementById("task3").innerHTML = '';
+			}
+			let cb4 = document.getElementById('cb4');
+			if(cb4.checked==true){
+				 document.getElementById('task4').innerHTML ='What is Your Level:'+ makeRadios();
+				 if(value=='Good' || value=='Excellence'){
+					document.getElementById("task4").innerHTML ='What is Your Level:'+ makeRadios()+'<br/>'+'Share the Link of Project :'+s2;
+				}
+			}else{
+				document.getElementById("task4").innerHTML = '';
+			}
+			let cb5 = document.getElementById('cb5');
+			if(cb5.checked==true){
+				 document.getElementById('task5').innerHTML ='What is Your Level:'+ makeRadios();
+				 if(value=='Good' || value=='Excellence'){
+					document.getElementById("task5").innerHTML ='What is Your Level:'+ makeRadios()+'<br/>'+'Share the Link of Project :'+s2;
+				}
+			}else{
+				document.getElementById("task5").innerHTML = '';
+			}
+		}
+
+
+
+
+
+
+	</script>
+
+
+</body>
+</html>

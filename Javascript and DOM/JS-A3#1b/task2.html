@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="css/task2.css" />
+</head>
+<body>
+	<h2>List of People</h2>
+	<div id="people"></div>
+	<button onclick="showPeople()">Show</button>
+	<button onclick="hidePeople()">Hide</button><br/>
+	<button onclick="sortName()">Sort By Name</button>
+	<button onclick="sortCountry()">Sort By Country</button>
+	<button onclick="sortAge()">Sort By Age</button><br/>
+	<button onclick="sortCountryName()">Sort By Country and Name</button>
+	<button onclick="sortCountryAge()">Sort By Country and Age</button><br/>
+	<button onclick="indiaPeople()">India</button>
+	<button onclick="usaPeople()">USA</button>
+	<button onclick="francePeople()">France</button>
+	<button onclick="getStyle()">Style by Country</button>
+	<button onclick="getStyleAge()">Style by Age</button>
+
+
+	<script>
+		const peoples = [{"name":"Jack","country":"USA","age":35},{"name":"Amit","country":"India","age":38},{"name":"Edward","country":"USA","age":41},{"name":"Vishal","country":"India","age":30},{"name":"Annie","country":"USA","age":27},{"name":"Nick","country":"France","age":32},{"name":"Francis","country":"France","age":44},{"name":"Preeti","country":"India","age":25},{"name":"Sophie","country":"France","age":29},{"name":"Harpreet","country":"India","age":48},{"name":"Bob","country":"USA","age":21}];
+		let flag = false;
+		let flag1 = false;
+		let str1 = 'India';
+		let str2 = 'USA';
+		let str3 = 'France';
+		function showPeople(){
+			const peoplesArr = peoples.map(function(element){
+				let str = '<tr class=\''+getColors(element)+'\'>';
+				str+='<td class=\''+getColors(element.name)+'\'>'+element.name+'</td>';
+				str+='<td class=\''+getColors(element.country)+'\'>'+element.country+'</td>';
+				str+='<td class=\''+getColors(element.age)+'\'>'+element.age+'</td>';
+				str+= '<td><button class=\'remBtn\' onclick=\'remove(\"'+element.name+'")\'>Remove</button></td>';
+				str+= '<td><button class=\'remBtn\' onclick=\'addOne(\"'+element.name+'")\'>Add 1</button></td>';
+				str+='</tr>';
+				return str;
+			});
+			let header = '<tr>';
+			header+='<th class=\'th\'onclick=\'sort(0)\'>Name</th>';
+			header+='<th class=\'th\'onclick=\'sort(1)\'>Country</th>';
+			header+='<th class=\'th\'onclick=\'sort(2)\'>Age</th>';
+			let html = '<table class=\'table\'>'+header+peoplesArr.join('')+'</table>';
+			let element = document.getElementById('people');
+			element.innerHTML = html;
+
+		}
+		function addOne(name){
+			let arr1 = peoples.find(function(element){
+				if(element.name==name){
+					return element.age;
+				}
+			});
+			arr1.age = arr1.age + 1;
+			showPeople();
+		}
+		function getColors(element){
+			if(element.country==str1 && flag1 || element.age>30 && element.age<=40 && flag){
+				return 'td india';
+			}
+			else if(element.country==str2 && flag1 || element.age<=30 && flag){
+				return 'td usa';
+			}
+			else if(element.country==str3 && flag1 || element.age>=40 && flag){
+			 return 'td france';
+			}
+			else {
+				return 'td';
+			}
+		}
+		function getStyle(){
+			flag = false;
+			flag1 = true;
+			showPeople();
+		}
+		/*function getStyle(){
+		const peoplesArr = peoples.map(function(element){
+			if(element.country==str1)
+				return '<li class=\'india\'>'+element.name+' ,'+element.country+' ,'+element.age+'</li>';
+			else if(element.country==str2)
+				return '<li class=\'usa\'>'+element.name+' ,'+element.country+' ,'+element.age+'</li>';
+			else return '<li class=\'france\'>'+element.name+' ,'+element.country+' ,'+element.age+'</li>';
+			});
+			let str = '<ul>'+peoplesArr.join('')+'</ul>';
+			let element = document.getElementById('people');
+			element.innerHTML = str;
+		}
+		function getColor(element){
+			if(element.age>30 && element.age<=40 && flag){
+				return 'td india';
+			}
+			else if(element.age<=30 && flag){
+				return 'td usa';
+			}
+			else if(element.age>=40 && flag){
+			 return 'td france';
+			}
+			else {
+				return 'td';
+			}
+		}*/
+		function getStyleAge(){
+			flag = true;
+			flag1 = false;
+			showPeople();
+		}
+		/*function getStyleAge(){
+		const peoplesArr = peoples.map(function(element){
+			if(element.age>30 && element.age<=40)
+				return '<li class=\'india\'>'+element.name+' ,'+element.country+' ,'+element.age+'</li>';
+			else if(element.age<30)
+				return '<li class=\'usa\'>'+element.name+' ,'+element.country+' ,'+element.age+'</li>';
+			else return '<li class=\'france\'>'+element.name+' ,'+element.country+' ,'+element.age+'</li>';
+			});
+			let str = '<ul>'+peoplesArr.join('')+'</ul>';
+			let element = document.getElementById('people');
+			element.innerHTML = str;
+		}*/
+
+		function indiaPeople(){
+			
+			const peoplesArr = peoples.map(function(element){
+				let str = '<tr>';
+				if(element.country==str1){
+				str+='<td class=\'td\'>'+element.name+'</td>';
+				str+='<td class=\'td\'>'+element.country+'</td>';
+				str+='<td class=\'td\'>'+element.age+'</td>';
+				str+='</tr>';
+			}
+			
+				return str;
+			});
+			let header = '<tr>';
+			header+='<th class=\'th\'>Name</th>';
+			header+='<th class=\'th\'>Country</th>';
+			header+='<th class=\'th\'>Age</th>';
+			header+='<th class=\'th\'></th>';
+			let html = '<table class=\'table\'>'+header+peoplesArr.join('')+'</table>';
+			let element = document.getElementById('people');
+			element.innerHTML = html;
+		}
+		function hidePeople(){
+			let element = document.getElementById('people');
+			element.innerHTML = '';
+		}
+		function sortName(){
+		 peoples.sort(sortPeopleByName);
+			showPeople();
+		}
+		function sortPeopleByName(name1,name2){
+			if(name1.name>name2.name)
+				return 1;
+			else if(name1.name<name2.name)
+				return -1;
+			else
+				return 0;
+		}
+		function sortCountry(){
+		 peoples.sort(sortPeopleByCountry);
+			showPeople();
+		}
+		function sortPeopleByCountry(name1,name2){
+			if(name1.country>name2.country)
+				return 1;
+			else if(name1.country<name2.country)
+				return -1;
+			else
+				return 0;
+		}
+		function sortAge(){
+		 peoples.sort(sortPeopleByAge);
+			showPeople();
+		}
+		function sortPeopleByAge(name1,name2){
+			if(name1.age>name2.age)
+				return 1;
+			else if(name1.age<name2.age)
+				return -1;
+			else
+				return 0;
+		}
+		function sortCountryName(){
+			peoples.sort(sortPeopleAndName);
+			showPeople();
+		}
+		function sortPeopleAndName(s1,s2){
+			if(s1.country==s2.country){
+				return s1.name.localeCompare(s2.name);
+			}else{
+				return s1.country.localeCompare(s2.country);
+			}
+		}
+		function sortCountryAge(){
+			peoples.sort(sortPeopleAndAge);
+			showPeople();
+		}
+		function sortPeopleAndAge(s1,s2){
+			if(s1.country==s2.country){
+				return s1.age - s2.age;
+			}else{
+				return s1.country.localeCompare(s2.country);
+			}
+		}
+		
+			
+		function usaPeople(){
+			const peoplesArr = peoples.map(function(element){
+				let str = '<tr>';
+				if(element.country==str2){
+				str+='<td class=\'td\'>'+element.name+'</td>';
+				str+='<td class=\'td\'>'+element.country+'</td>';
+				str+='<td class=\'td\'>'+element.age+'</td>';
+				str+='</tr>';
+			}
+			
+				return str;
+			});
+			let header = '<tr>';
+			header+='<th class=\'th\'>Name</th>';
+			header+='<th class=\'th\'>Country</th>';
+			header+='<th class=\'th\'>Age</th>';
+			let html = '<table class=\'table\'>'+header+peoplesArr.join('')+'</table>';
+			let element = document.getElementById('people');
+			element.innerHTML = html;
+			
+		}
+		function francePeople(){
+			const peoplesArr = peoples.map(function(element){
+				let str = '<tr>';
+				if(element.country==str3){
+				str+='<td class=\'td\'>'+element.name+'</td>';
+				str+='<td class=\'td\'>'+element.country+'</td>';
+				str+='<td class=\'td\'>'+element.age+'</td>';
+				str+='</tr>';
+			}
+			
+				return str;
+			});
+			let header = '<tr>';
+			header+='<th class=\'th\'>Name</th>';
+			header+='<th class=\'th\'>Country</th>';
+			header+='<th class=\'th\'>Age</th>';
+			let html = '<table class=\'table\'>'+header+peoplesArr.join('')+'</table>';
+			let element = document.getElementById('people');
+			element.innerHTML = html;
+			
+		}
+		function sort(num){
+			if(num==0)
+				return peoples.sort(sortPeopleByName);
+			
+			else if(num==1)
+				return peoples.sort(sortPeopleByCountry);
+			
+			else
+				return peoples.sort(sortPeopleByAge);
+			
+			showPeople();
+		}
+		function remove(name){
+			let index = peoples.findIndex(function(st){
+				return st.name==name;
+			});
+			peoples.splice(index,1);
+			showPeople();
+		}
+		
+	</script>
+
+</body>
+</html>

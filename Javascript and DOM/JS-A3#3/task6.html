@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="css/task6.css" />
+</head>
+<body>
+	<div id="table" class="table1">
+	<input type = "text" id = "t1" onclick="check(this)">
+	<input type = "text" id = "t2" onclick="check(this)">
+	</div>
+
+	<script>
+
+		let arr = ['Kilometer','Meter','Centimeter','Milimeter'];
+		showTable(arr);
+
+
+	function showTable(arr2){
+			let header = '<th class="table1">';
+				header+='<th class="th1">Convert Lengths</th></br>';
+				header+= '<th class="th1"><input type = "text" id = "t1" onclick="check(this)"></th>';
+				header+= '<th class="th1"><input type = "text" id = "t2" onclick="check(this)"></br></th>';
+				header+= makeDDFn('pid',arr2,'','','check');
+				header+= makeDDFn('pid1',arr2,'','','check');
+				header+= '</th>';
+
+			let element = document.getElementById('table');
+			element.innerHTML = header;
+		}
+
+
+
+
+		function check(elem){
+			let selVal = document.getElementById('pid').value;
+			let txtField = document.getElementById("t1");
+			let txt = txtField.value;
+			let selVal1 = document.getElementById('pid1').value;
+			let txtField1 = document.getElementById("t2");
+			
+			if(selVal== 'Kilometer' && selVal1=='Meter'){
+				return txtField1.value = txt * 1000;
+			}else if(selVal== 'Kilometer' && selVal1=='Centimeter'){
+				return txtField1.value = txt * 100000;
+			}
+			else if(selVal== 'Kilometer' && selVal1=='Milimeter'){
+				return txtField1.value = txt * 1000000;
+			}
+			else if(selVal== 'Kilometer' && selVal1=='Kilometer'){
+				return txtField1.value = txt;
+			}
+			if(selVal== 'Meter' && selVal1=='Kilometer'){
+				return txtField1.value = txt / 1000;
+			}else if(selVal== 'Meter' && selVal1=='Centimeter'){
+				return txtField1.value = txt * 100;
+			}
+			else if(selVal== 'Meter' && selVal1=='Meter'){
+				return txtField1.value = txt;
+			}
+			else if(selVal== 'Meter' && selVal1=='Milimeter'){
+				return txtField1.value = txt * 1000;
+			}
+			if(selVal== 'Centimeter' && selVal1=='Kilometer'){
+				return txtField1.value = txt / 100000;
+			}else if(selVal== 'Centimeter' && selVal1=='Meter'){
+				return txtField1.value = txt / 100;
+			}
+			else if(selVal== 'Centimeter' && selVal1=='Milimeter'){
+				return txtField1.value = txt * 10;
+			}
+		}
+
+
+
+
+
+		function makeDDFn(id,data,selectedVal,valOnTop,onChangeFn){
+			let dataMap = data.map(function(opt){
+				if(opt==selectedVal)
+					return '<option selected>'+opt+'</option>';
+				else
+					return '<option>'+opt+'</option>';
+			});
+			let first = '<option value=\'\' disabled>'+valOnTop+'</option>';
+			if(selectedVal=='')
+				first = '<option value=\'\' selected disabled>'+valOnTop+'</option>';
+			let ddHtml = '<select id=\''+id+'\'>';
+			if(onChangeFn!='')
+				ddHtml = '<select id=\''+id+'\' onchange=\''+onChangeFn+'(this)\'>';
+			ddHtml += first+dataMap.join('')+'</select>';
+			return ddHtml;
+		}
+
+
+
+	</script>
+
+</body>
+</html>

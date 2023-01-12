@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<input type="text" id="t1" placeholder="Number1"> +
+	<input type="text" id="t2" placeholder="Number2"> =
+	<input type="text" id="t3" placeholder="Sum" onfocus="number3(this)">
+	<div id="d1"></div>
+	
+
+
+	<script>
+
+		function number3(elem){
+			let txtField1 = document.getElementById("t1");
+			let txt1 = txtField1.value;
+			let txtField2 = document.getElementById("t2");
+			let txt2 = txtField2.value;
+			let txt3 = +txt1 + +txt2;
+
+				if(isNaN(txt3)==true){ 
+					txtField3 = document.getElementById("t3");
+					txtField3.value = 'Input correct number';
+				}
+				else{
+					txtField3 = document.getElementById("t3");
+					txtField3.value = txt3;
+					
+				}
+				
+
+				
+		}
+
+	</script>
+
+</body>
+</html>

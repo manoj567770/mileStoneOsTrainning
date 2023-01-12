@@ -1,0 +1,35 @@
+body{
+	margin: 0 auto;
+	background: gray;
+	background-repeat: no-repeat;
+	background-size: 100% 720px;
+}
+.container{
+	width: 500px;
+	height: 450px;
+	text-align: center;
+	margin: 0 auto;
+	background-color: rgba(44, 62, 80, 0.7);
+	border-radius: 04px;
+	margin: 0 auto;
+	margin-top: 160px;
+	color: white;
+}
+.container img{
+	width: 80px;
+	height: 80px;
+	margin-top: 60px;
+	margin-right: 30px;
+	text-align: center;
+}
+input[type="text"]
+{
+	border-radius: 20px 20px 20px 20px;
+}
+input[type="password"]
+{
+	border-radius: 20px 20px 20px 20px;
+}
+.container h2{
+	margin-bottom: 0px;
+}

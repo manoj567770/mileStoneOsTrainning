@@ -1,0 +1,19 @@
+body h1{
+	font-size: 30px;
+	font-weight: bold;
+	line-height: 1.6em;
+	margin-left: 600px;
+	font-family: italic,gadget,sans-serif;
+}
+
+body img{
+	margin-left: 500px;
+}
+
+.about-smith{
+	font-size: 12px;
+}
+
+.note li{
+	
+}

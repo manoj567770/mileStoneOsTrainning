@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="css/taske1.css" />
+</head>
+<body>
+	<h2>Students</h2>
+	<div id="students"></div>
+	<button onclick="showStudents()">Show Students</button>
+	<button onclick="highMarks()">Highlight marks</button>
+	<button onclick="highStudents()">Highlight Students</button>
+	<button onclick="clearStyle()">Clear</button>
+	<script>
+		let highlightMarks = false;
+		let highlightStudents = false;
+		const students = [{name:'Bob',maths:82,computers:88},
+		{name:'Jack',maths:44,computers:55},
+		{name:'Mary',maths:91,computers:73},
+		{name:'Dave',maths:60,computers:89},
+		{name:'Julia',maths:58,computers:60},
+		{name:'Steve',maths:42,computers:47},];
+
+		function showStudents(){
+			const arr1 = students.map(function(ele){
+				let str = '<tr class=\''+getClassStudents(ele)+'\'>';
+				str+='<td class=\'td1\'>'+ele.name+'</td>';
+				str+='<td class=\''+getClassMarks(ele.maths)+'\'>'+ele.maths+'</td>';
+				str+='<td class=\''+getClassMarks(ele.computers)+'\'>'+ele.computers+'</td>';
+				str+= '<td><button class=\'remBtn\' onclick=\'remove(\"'+ele.name+'")\'>Remove</button></td>';
+				str+='</tr>';
+				return str;
+			});
+			let header = '<tr>';
+			header+='<th class=\'th1\' onclick=\'sort(0)\'>Name</th>';
+			header+='<th class=\'th1\' onclick=\'sort(1)\'>Maths</th>';
+			header+='<th class=\'th1\' onclick=\'sort(2)\'>Computers</th>';
+			header+='<th class=\'th1\'></th>';
+			header+='</tr>';
+			let html = '<table class=\'table1\'>'+header+arr1.join('')+'</table1>';
+			let element = document.getElementById('students');
+			element.innerHTML = html;
+		}
+		function getClassMarks(marks){
+			if(marks>=75 && highlightMarks)
+				return 'td1 score75';
+			else if(marks<=50 && highlightMarks)
+				return 'td1 score50';
+			else
+				return 'td1';
+		}
+		function getClassStudents(st){
+			let tot = st.maths + st.computers;
+			if(tot>=150 && highlightStudents)
+				return 'total150';
+			else if(tot<=100 && highlightStudents)
+				return 'total100';
+			else 
+				return '';
+		}
+		function remove(name){
+			let index = students.findIndex(function(st){
+				return st.name==name;
+			});
+			students.splice(index,1);
+			showStudents();
+		}
+		function highMarks(){
+			highlightMarks = true;
+			highlightStudents = false;
+			showStudents();
+		}
+		function highStudents(){
+			highlightStudents = true;
+			highlightMarks = false;
+			showStudents();
+		}
+		function clearStyle(){
+			highlightStudents = false;
+			highlightMarks = false;
+			showStudents();
+		}
+		function sort(num){
+			if(num==0)
+				return students.sort(sortName);
+			
+			else if(num==1)
+				return students.sort(sortMaths);
+			
+			else
+				return students.sort(sortComputers);
+			
+			showStudents();
+		}
+		function sortName(st1,st2){
+			return st1.name.localeCompare(st2.name);
+		}
+		function sortMaths(st1,st2){
+			return st1.maths - st2.maths;
+		}
+		function sortComputers(st1,st2){
+			return st1.computers - st2.computers;
+		}
+	</script>
+
+</body>
+</html>

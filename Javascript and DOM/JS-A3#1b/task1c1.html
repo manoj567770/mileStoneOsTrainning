@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="css/task1c1.css" />
+</head>
+<body>
+	<h2>List of Name</h2>
+	<div id="listName"></div>
+	<button onclick='ShowName()'>Show Names</button>
+	<button onclick='HideName()'>Hide Names</button><br/>
+	<button onclick='sortAsc()'>Ascending Order</button>
+	<button onclick='sortDesc()'>Descending Order</button>
+	<script>
+		const names = ['Steven','Anna','Anna Mathews','Tim','David','Julia Burton','Mary James','Ed Johnson'];
+		function ShowName(){
+			const namesMap = names.map(function(name){
+				return '<li>'+name+'</li>';
+			});
+			let str = '<ul>'+namesMap.join('')+'</ul>';
+			let element = document.getElementById('listName');
+			element.innerHTML = str;
+		}
+		function HideName(){
+			let element = document.getElementById('listName');
+			element.innerHTML = '';
+		}
+		function sortAsc(){
+			names.sort(sortNameAsc);
+			ShowName();
+		}
+		function sortNameAsc(name1,name2){
+			if(name1>name2)
+				return 1;
+			else if(name1<name2)
+				return -1;
+			else return 0;
+		}
+		function sortDesc(){
+			names.sort(sortNameDesc);
+			ShowName();
+		}
+		function sortNameDesc(name1,name2){
+			if(name1>name2)
+				return -1;
+			else if(name1<name2)
+				return 1;
+			else return 0;
+		}
+	</script>
+
+
+</body>
+</html>
